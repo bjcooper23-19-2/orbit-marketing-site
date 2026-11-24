@@ -1,3 +1,4 @@
+import { renderCollage } from './collage.mjs';
 const esc = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const link = (prefix, slug = '') => `${prefix}${slug ? `${slug}/` : ''}`;
 const arrow = '<span aria-hidden="true">↗</span>';
@@ -5,24 +6,7 @@ const action = (prefix, slug, label, className = 'text-link') => `<a class="${cl
 const logo = prefix => `<a class="brand" href="${link(prefix)}" aria-label="Orbit home"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><ellipse cx="50" cy="50" rx="38" ry="28" transform="rotate(-12 50 50)"/><ellipse cx="52" cy="48" rx="24" ry="18" transform="rotate(25 52 48)"/><circle cx="30" cy="38" r="4"/><circle cx="68" cy="42" r="3.2"/><circle cx="52" cy="64" r="2.8" opacity=".7"/></svg><span>Orbit</span></a>`;
 const cta = (prefix, label = 'Register your interest') => action(prefix, 'register-interest', label, 'button');
 const closing = prefix => `<section class="closing"><div class="wrap closing-grid"><h2 class="heading-mixed">More family life.<br><em>Less life admin.</em></h2><div><p>Orbit is being developed and tested around the realities of everyday family life.</p><p>If you'd like to follow our progress or hear when Orbit is ready for more families, we'd love to hear from you.</p>${cta(prefix)}</div></div></section>`;
-const fragments = `<div class="fragments" aria-hidden="true">
-  <div class="fragment fragment-school"><small>SCHOOL · WEEKLY UPDATE</small><span>Dates for your diary</span></div>
-  <div class="fragment fragment-email"><small>INBOX · 08:42</small><strong>School newsletter</strong><span>Trip details, dates for your diary and a form to return</span></div>
-  <div class="fragment fragment-note"><small>REMINDER</small><strong>Consent form due Friday</strong><span>It's in the school bag. Somewhere.</span></div>
-  <div class="fragment fragment-party"><small>YOU'RE INVITED</small><strong>Saturday, 2 pm</strong><span>Can you let us know by Tuesday?</span></div>
-  <div class="fragment fragment-chat"><small>MESSAGE · 17:16</small><span>Football's moved to 10:30. Does that still work?</span></div>
-  <div class="fragment fragment-list"><small>TO REMEMBER</small><span>□ Trainers<br>□ Present<br>□ Pick-up?</span></div>
-  <div class="fragment fragment-slip"><strong>Who can collect?</strong></div>
-  <div class="fragment fragment-calendar"><small>CALENDAR CHANGE</small><strong>Training moved</strong><span>New time: 10:30</span></div>
-  <div class="fragment fragment-rsvp"><small>PARTY INVITE</small><span>RSVP by Tuesday</span></div>
-  <div class="fragment fragment-kit"><small>CLUB KIT</small><span>Boots · water bottle · coat</span></div>
-  <div class="fragment fragment-form"><small>FORM TO RETURN</small><strong>Trip consent</strong><span>Before Friday</span></div>
-  <div class="fragment fragment-pickup"><small>MESSAGE</small><span>Could you do the pick-up?</span></div>
-  <div class="fragment fragment-appointment"><small>APPOINTMENT</small><strong>Thursday, 4:15</strong></div>
-  <div class="fragment fragment-bag"><small>FOR TOMORROW</small><span>□ Book bag<br>□ PE kit</span></div>
-  <div class="fragment fragment-payment"><small>SCHOOL TRIP</small><span>Payment link in the email</span></div>
-  <div class="fragment fragment-reply"><small>DON'T FORGET</small><span>Reply to the club</span></div>
-</div>`;
+const fragments = renderCollage();
 const productSlot = prefix => `<figure class="product-image"><img src="${prefix}assets/images/orbit-demo-to-sort.png" width="390" height="845" loading="lazy" alt="Orbit demo showing Things to sort, including jobs needing attention"><figcaption>Things to sort · Orbit demo with fictional family details</figcaption></figure>`;
 const home = prefix => `<section class="hero wrap"><div class="hero-copy"><p class="kicker">Give families less to carry.</p><h1 class="heading-mixed"><span>Life is complicated.</span><br><em>Managing it doesn't need to be.</em></h1><p class="hero-lead">School emails. Party invitations. Sports clubs. Appointments. Changing plans. All the little things that keep family life moving.</p><p>Orbit helps bring it all together, making it easier to know what needs doing, what's happening and who's doing what.</p><div class="actions">${action(prefix, 'how-it-works', 'Discover Orbit', 'button')}${action(prefix, 'register-interest', 'Register your interest')}</div></div><div class="hero-art">${fragments}<div class="hero-art-caption">So much comes in.<br>Someone has to make sense of it.</div></div></section>
 <section class="section section-ivory"><div class="wrap editorial-grid"><div><h2 class="heading-sans">Family life comes<br>from everywhere.</h2></div><div class="prose"><p>A school newsletter lands in your inbox. Football training moves to a different time. A birthday invitation comes home in a school bag.</p><p>Someone needs collecting, something needs signing and there's probably something you've forgotten.</p><p>The information keeps coming, and somebody has to make sense of it all.</p></div></div><div class="wrap fragment-line" aria-hidden="true"><span>school newsletter</span><span>time changed</span><span>reply by Tuesday</span><span>bring trainers</span><span>pick-up?</span></div></section>
