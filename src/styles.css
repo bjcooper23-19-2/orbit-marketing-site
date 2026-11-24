@@ -61,3 +61,15 @@
   .hero-copy:before{height:205px}
   .kicker{margin-bottom:18px}
 }
+
+/* A restrained device edge makes selected genuine demo screens read as mobile. */
+.phone-frame{position:relative;width:min(100%,330px);padding:24px 7px 7px;border:1px solid #39464b;border-radius:36px;background:#26343a;box-shadow:0 12px 28px rgba(36,55,60,.12),0 2px 4px rgba(36,55,60,.08)}
+.phone-frame:before{content:'';position:absolute;top:8px;left:50%;width:62px;height:8px;transform:translateX(-50%);border-radius:20px;background:#111d23}
+.phone-screen{overflow:hidden;border-radius:24px;background:#f7f5ef}
+.phone-screen img,.product-image .phone-screen img,.screenshot-strip .phone-screen img{display:block;width:100%;height:auto;border:0}
+.product-image-phone{max-width:350px}
+.product-image-phone .phone-frame{margin-inline:auto}
+.product-image-phone figcaption{max-width:330px;margin-inline:auto}
+.screenshot-strip .phone-figure{max-width:340px}
+.screenshot-strip .phone-frame{width:100%}
+@media(max-width:600px){.product-image-phone{width:min(100%,330px)}.screenshot-strip .phone-figure{width:min(100%,330px)}}
