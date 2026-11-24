@@ -25,3 +25,39 @@
 .incoming-hand{background:#f6df85;padding:12px 14px 17px;min-height:77px;box-shadow:2px 8px 12px #33433e30;font-family:'Comic Sans MS','Bradley Hand',cursive;color:#3c4d65}.incoming-hand:before{content:'';position:absolute;top:0;left:38%;width:40px;height:8px;background:#fff9;transform:rotate(-5deg)}.incoming-hand strong{font-size:16px;font-weight:500;line-height:1.1;margin-bottom:5px}.incoming-hand span{font-size:11px}.incoming-list{background:repeating-linear-gradient(#fffdf6 0 22px,#ced9db 23px,#fffdf6 24px);border-left:3px solid #d5a4a2;padding:9px 12px 12px;min-height:112px;font-family:'Comic Sans MS','Bradley Hand',cursive}.incoming-list strong{font-size:13px;margin-bottom:7px}.incoming-list span{font-size:10px;line-height:22px}.incoming-club{background:#f1f5f1;border:1px solid #bbcec1;padding:0 11px 11px}.club-head{margin:0 -11px 8px;background:#668f75;color:#fff;padding:5px 10px;font-weight:800;font-size:9px;letter-spacing:.1em}.incoming-club strong{font-size:12px;margin-bottom:4px}.incoming-club p{font-size:9px}.incoming-club small{display:block;border-top:1px solid #cddbd0;margin-top:8px;padding-top:5px;color:#73847a}
 .hero-art-caption{z-index:30;background:rgba(234,229,219,.92);padding:6px 9px;left:20px;bottom:17px}
 @media(max-width:600px){.hero-art{min-height:680px}.incoming{left:var(--mx);top:var(--my);width:var(--mw);transform:rotate(var(--mr))}.incoming.mobile-hide{display:none}.incoming-newsletter{min-height:165px}.incoming-newsletter strong{font-size:18px}.incoming-invite{min-height:129px}.incoming-invite strong{font-size:22px}.incoming-chat{font-size:9px}.incoming-notification{padding:6px 7px;min-height:44px}.hero-art-caption{z-index:30}}
+
+/* Complexity enters from the left and thins into the clear proposition. */
+@media(min-width:851px){
+  .hero{position:relative;isolation:isolate;grid-template-columns:1fr 1fr;min-height:730px}
+  .hero-copy{grid-column:2;padding:clamp(76px,9vw,136px) 0 90px 20px;z-index:2}
+  .hero-art{position:absolute;inset:0 auto 0 calc((min(100vw - 96px,var(--max)) - 100vw)/2);width:78%;min-height:0;margin:0;background:transparent;overflow:visible;pointer-events:none;z-index:1}
+  .hero-art:before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 16% 44%,#eae5db 0%,rgba(234,229,219,.73) 38%,transparent 75%);pointer-events:none}
+  .hero-art:after{display:none}
+  .incoming-collage{overflow:visible;mask-image:linear-gradient(to right,#000 0%,#000 42%,rgba(0,0,0,.55) 53%,rgba(0,0,0,.1) 65%,transparent 72%)}
+  .incoming-taper{position:absolute;inset:0;pointer-events:none}
+  .incoming-taper-top{left:67%;top:3%;width:175px;transform:rotate(6deg);opacity:.85}
+  .incoming-taper-bottom{left:54%;top:86%;width:145px;transform:rotate(-8deg);opacity:.75}
+  .hero-art-caption{background:rgba(247,245,239,.9);left:18px;bottom:21px;z-index:20}
+}
+/* The same incoming material resolves vertically on narrow screens. */
+@media(max-width:850px){
+  .hero{display:flex;flex-direction:column;position:relative;isolation:isolate}
+  .hero-art{order:-1;position:relative;height:270px;min-height:0;margin-inline:-32px;background:transparent;overflow-x:clip;overflow-y:visible;pointer-events:none;z-index:1}
+  .hero-art:before{content:'';position:absolute;inset:-20px 0 -70px;background:linear-gradient(#eae5db 0%,rgba(234,229,219,.8) 58%,transparent 100%);pointer-events:none}
+  .hero-art:after{display:none}
+  .incoming-collage{height:390px;overflow:visible;mask-image:linear-gradient(to bottom,#000 0%,#000 34%,rgba(0,0,0,.7) 52%,transparent 77%)}
+  .incoming-taper{display:none}
+  .incoming{left:var(--mx);top:var(--my);width:var(--mw);transform:rotate(var(--mr))}
+  .incoming.mobile-hide{display:none}
+  .hero-copy{position:relative;z-index:2;padding:11px 0 60px}
+  .hero-copy:before{content:'';position:absolute;inset:0 -20px auto;height:230px;background:linear-gradient(to bottom,rgba(247,245,239,.45),var(--ivory) 82%);z-index:-1;pointer-events:none}
+  .hero-art-caption{background:rgba(247,245,239,.9);left:32px;bottom:9px;z-index:30}
+}
+@media(max-width:600px){
+  .hero-art{height:235px;min-height:0;margin-inline:-20px}
+  .incoming-collage{height:350px;mask-image:linear-gradient(to bottom,#000 0%,#000 34%,rgba(0,0,0,.65) 52%,transparent 75%)}
+  .hero-art-caption{left:20px;bottom:4px}
+  .hero-copy{padding-top:13px}
+  .hero-copy:before{height:205px}
+  .kicker{margin-bottom:18px}
+}

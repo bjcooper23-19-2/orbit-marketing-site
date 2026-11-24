@@ -65,5 +65,5 @@ export function renderCollage() {
     const [x,y,w,r,z]=desktop;
     const mobileStyle=mobile ? `--mx:${mobile[0]}%;--my:${mobile[1]}%;--mw:${mobile[2]}px;--mr:${mobile[3]}deg;` : '';
     return `<div class="incoming incoming-${format}${variant ? ` incoming-${variant}` : ''}${mobile ? '' : ' mobile-hide'}" style="--x:${x}%;--y:${y}%;--w:${w}px;--r:${r}deg;--z:${z};${mobileStyle}">${content}</div>`;
-  }).join('')}</div>`;
+  }).join('')}</div><div class="incoming-taper" aria-hidden="true"><div class="incoming incoming-notification incoming-taper-top">${notification('School app','New message','Please check tomorrow’s arrangements','now')}</div><div class="incoming incoming-hand incoming-taper-bottom">${hand('Swimming kit?', 'check the bag tonight')}</div></div>`;
 }
