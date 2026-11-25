@@ -89,7 +89,7 @@
 .hero-copy .hero-lead{max-width:570px}
 .journey{padding-block:clamp(76px,8vw,120px)}
 .journey-heading{max-width:1180px;margin-bottom:58px}
-.journey-heading h2{max-width:900px;margin-bottom:22px}
+.journey-heading h2{font-size:clamp(36px,4vw,58px);max-width:none;margin-bottom:22px;text-wrap:balance}
 .journey-heading>p{font-size:19px;max-width:740px;margin:0}.journey-heading>p+p{margin-top:14px}
 .journey-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:8%;align-items:start}
 .journey-copy{max-width:490px}
