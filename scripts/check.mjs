@@ -10,7 +10,8 @@ const descriptions = new Set();
 for (const page of pages) {
   const directory = path.resolve('dist', page.slug);
   const html = await readFile(path.join(directory, 'index.html'), 'utf8');
-  for (const pattern of [/<main id="main">/, /<h1[ >]/, /<title>[^<]+<\/title>/, /<meta name="description"/, /<link rel="canonical"/, /<meta property="og:image"/, /<meta name="robots" content="noindex, nofollow"/]) {
+  const robotsMeta = config.publicationApproved && page.indexable ? 'index, follow' : 'noindex, nofollow';
+  for (const pattern of [/<main id="main">/, /<h1[ >]/, /<title>[^<]+<\/title>/, /<meta name="description"/, /<link rel="canonical"/, /<meta property="og:image"/, new RegExp(`<meta name="robots" content="${robotsMeta}">`)]) {
     if (!pattern.test(html)) throw new Error(`${page.slug || 'home'}: missing ${pattern}`);
     checks++;
   }
@@ -48,7 +49,7 @@ for (const page of pages) {
 }
 for (const slug of ['privacy', 'terms']) {
   const html = await readFile(path.join('dist', slug, 'index.html'), 'utf8');
-  if (!html.includes(`mailto:${config.contactEmail}`) || !html.includes(company.office.replace('&', '&amp;'))) throw new Error(`${slug}: missing operator contact details`);
+  if (!html.includes(`mailto:${config.contactEmail}`) || !html.includes(company.office.replace('&', '&amp;')) || !html.includes(`Last updated: ${config.publicationDate}`)) throw new Error(`${slug}: missing operator contact details or publication date`);
   checks++;
 }
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
@@ -59,5 +60,7 @@ for (const page of pages.filter(page => page.indexable)) {
 }
 for (const asset of ['dist/assets/images/social-share.png', 'dist/assets/images/founder.jpg', 'dist/assets/images/orbit-demo-to-sort.png', 'dist/assets/fonts/newsreader.ttf', 'dist/assets/fonts/dm-sans.woff2', 'dist/robots.txt', 'dist/sitemap.xml']) { await access(asset); checks++; }
 const robots = await readFile('dist/robots.txt', 'utf8');
-if (!robots.includes('Disallow: /')) throw new Error('Review build must block indexing.');
+if (config.publicationApproved) {
+  if (!robots.includes('Allow: /') || !robots.includes(`Sitemap: ${origin}/sitemap.xml`) || robots.includes('Disallow: /')) throw new Error('Published build must allow indexing.');
+} else if (!robots.includes('Disallow: /')) throw new Error('Review build must block indexing.');
 console.log(`Checked ${pages.length} pages, local links and assets (${checks} checks).`);

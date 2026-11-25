@@ -14,13 +14,13 @@ npm run preview
 
 Open `http://localhost:4173/`. The `dev` command serves the most recent build; run `npm run build` again after edits. Generated files are in `dist/` and are not committed.
 
-The static output uses relative links, so it works at both a GitHub Pages repository path and the eventual custom domain. Canonical and social URLs are set for `https://myfamilyorbit.uk` but the build is marked `noindex` until publication is explicitly prepared. `robots.txt` disallows all crawling in the review build.
+The static output uses relative links, so it works at both a GitHub Pages repository path and the intended custom domain. Canonical and social URLs are set for `https://myfamilyorbit.uk`. The production build allows indexing of public pages; registration and contact retain page-level `noindex` settings.
 
 ## Configuration and publication
 
 [`site.config.json`](site.config.json) holds the confirmed Tally registration URL, public contact email and canonical origin. Registration actions open the external Tally form; no form, database or mail service is embedded in this site. The optional sign-in URL is still empty and its link stays hidden. GA4 remains inactive; its future measurement ID loads no script and requires a reviewed consent implementation before use.
 
-The owner has approved the Privacy Policy and Website Terms of Use, so `legalApproved` is true. The prepared publication date is 25 November 2026 and must be changed if the site goes live later. `publicationApproved` remains false and the build still refuses to publish. GitHub Pages is enabled with GitHub Actions as its source, but the repository custom domain is not configured. The Pages workflow is manual (`workflow_dispatch`) with no push trigger. An explicitly authorised release change must remove the publication and indexing guards. Do not run the workflow, merge, change DNS or publish during review. See the [publication checklist](docs/publication-checklist.md), [readiness handover](docs/publication-readiness.md) and [supplier and privacy operations record](docs/supplier-privacy-operations.md).
+The owner has approved the Privacy Policy and Website Terms of Use. `legalApproved` and `publicationApproved` are true, and the publication date is 25 November 2026. Change that date before deployment if the site goes live later. GitHub Pages is enabled with GitHub Actions as its source, but the repository custom domain is not configured. The Pages workflow is manual (`workflow_dispatch`) with no push trigger. Do not run it, merge, change DNS or publish without separate owner authorisation. See the [publication checklist](docs/publication-checklist.md), [readiness handover](docs/publication-readiness.md) and [supplier and privacy operations record](docs/supplier-privacy-operations.md).
 
 ## Sources
 
