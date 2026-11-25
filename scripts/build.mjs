@@ -19,7 +19,7 @@ for (const page of pages) {
   await writeFile(path.join(dir, 'index.html'), shell(page, config, depth));
 }
 const origin = config.canonicalOrigin.replace(/\/$/, '');
-const publicPages = pages.filter(page => page.indexable);
+const publicPages = pages.filter(page => config.publicationApproved && page.indexable);
 await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${publicPages.map(page => `<url><loc>${origin}/${page.slug ? `${page.slug}/` : ''}</loc></url>`).join('')}</urlset>`);
-await writeFile('dist/robots.txt', config.publicationApproved ? `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n` : 'User-agent: *\nDisallow: /\n');
+await writeFile('dist/robots.txt', `User-agent: *\n${config.publicationApproved ? 'Allow' : 'Disallow'}: /\nSitemap: ${origin}/sitemap.xml\n`);
 console.log(`Built ${pages.length} pages in dist/ (${config.publicationApproved ? 'publication approved' : 'review only, noindex'}).`);
