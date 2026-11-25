@@ -1,6 +1,6 @@
 # Brand strategy
 
-Orbit's purpose is to give families less to carry. The public promise is: “Orbit gives parents one place to put the jobs family life creates, so there is less to remember, work out and chase.” The headline is “Life is complicated. Managing it doesn't need to be.” The tagline is “More family life. Less life admin.”
+Orbit's purpose is to give families less to carry. The public promise is: “Orbit gives parents one place to put the jobs family life creates, so there is less to remember, work out and chase.” This PR tests “From school emails to family plans, without all the admin in between.” as the homepage headline. The approved tagline remains “More family life. Less life admin.”
 
 The audience is adult parents, guardians and carers across varied household arrangements. Use warm, direct British English. Describe family information as fragmented and organisational responsibility as often concentrated. Avoid blaming the person carrying it or the person trying to help. Do not present Orbit as a calendar replacement, generic task manager or AI assistant.
 
