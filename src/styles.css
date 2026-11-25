@@ -32,19 +32,22 @@
   .hero-copy{grid-column:2;padding:clamp(76px,9vw,136px) 0 90px 20px;z-index:2}
   .hero-art{position:absolute;inset:0 auto 0 calc((min(100vw - 96px,var(--max)) - 100vw)/2);width:78%;min-height:0;margin:0;background:transparent;overflow:visible;pointer-events:none;z-index:1}
   .hero-art:before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 16% 44%,#eae5db 0%,rgba(234,229,219,.73) 38%,transparent 75%);pointer-events:none}
-  .hero-art:after{display:none}
+  .hero-art:after{display:block;inset:auto -2px -2px;height:155px;background:linear-gradient(to bottom,rgba(247,245,239,0),var(--ivory) 88%);z-index:18}
   .incoming-collage{overflow:visible;mask-image:linear-gradient(to right,#000 0%,#000 42%,rgba(0,0,0,.55) 53%,rgba(0,0,0,.1) 65%,transparent 72%)}
   .incoming-taper{position:absolute;inset:0;pointer-events:none}
   .incoming-taper-top{left:67%;top:3%;width:175px;transform:rotate(6deg);opacity:.85}
+  .incoming-taper-middle{left:58%;top:36%;width:182px;transform:rotate(-7deg);opacity:.78}
+  .incoming-taper-note{left:49%;top:58%;width:135px;transform:rotate(8deg);opacity:.8}
+  .incoming-taper-list{left:35%;top:83%;width:148px;transform:rotate(-6deg);opacity:.76}
   .incoming-taper-bottom{left:54%;top:86%;width:145px;transform:rotate(-8deg);opacity:.75}
-  .hero-art-caption{background:rgba(247,245,239,.9);left:18px;bottom:21px;z-index:20}
+  .hero-art-caption{background:rgba(247,245,239,.9);left:18px;bottom:21px;z-index:30}
 }
 /* The same incoming material resolves vertically on narrow screens. */
 @media(max-width:850px){
   .hero{display:flex;flex-direction:column;position:relative;isolation:isolate}
   .hero-art{order:-1;position:relative;height:270px;min-height:0;margin-inline:-32px;background:transparent;overflow-x:clip;overflow-y:visible;pointer-events:none;z-index:1}
   .hero-art:before{content:'';position:absolute;inset:-20px 0 -70px;background:linear-gradient(#eae5db 0%,rgba(234,229,219,.8) 58%,transparent 100%);pointer-events:none}
-  .hero-art:after{display:none}
+  .hero-art:after{display:block;inset:auto 0 -2px;height:90px;background:linear-gradient(to bottom,rgba(247,245,239,0),var(--ivory) 90%);z-index:18}
   .incoming-collage{height:390px;overflow:visible;mask-image:linear-gradient(to bottom,#000 0%,#000 34%,rgba(0,0,0,.7) 52%,transparent 77%)}
   .incoming-taper{display:none}
   .incoming{left:var(--mx);top:var(--my);width:var(--mw);transform:rotate(var(--mr))}
@@ -118,4 +121,14 @@
 .site-footer .footer-bottom{justify-content:flex-start}
 @media(max-width:1100px){.hero h1{font-size:clamp(46px,5vw,60px)}.journey-grid{gap:5%}.journey-images{gap:12px}}
 @media(max-width:850px){.hero h1{font-size:clamp(49px,7vw,66px)}.journey-grid{grid-template-columns:1fr;gap:38px}.journey-copy{max-width:720px}.journey-images{max-width:700px}}
-@media(max-width:600px){.hero-art{height:190px}.incoming-collage{height:310px}.hero h1{font-size:clamp(43px,11.1vw,53px);line-height:1.07}.hero-copy{padding-bottom:46px}.hero-copy .hero-lead{font-size:17px}.journey-heading{margin-bottom:30px}.journey-heading>p:last-child{font-size:17px}.journey-images{grid-template-columns:1fr;gap:34px;max-width:320px}.journey-images .phone-frame{width:100%}.journey-images figcaption{font-size:12px}.journey-steps li{padding-block:15px}.journey-steps strong{font-size:17px}.journey-steps span{font-size:15px}}
+@media(max-width:600px){.hero-art{height:220px}.incoming-collage{height:310px}.hero h1{font-size:clamp(43px,11.1vw,53px);line-height:1.07}.hero-copy{padding-bottom:46px}.hero-copy .hero-lead{font-size:17px}.journey-heading{margin-bottom:30px}.journey-heading>p:last-child{font-size:17px}.journey-images{grid-template-columns:1fr;gap:34px;max-width:320px}.journey-images .phone-frame{width:100%}.journey-images figcaption{font-size:12px}.journey-steps li{padding-block:15px}.journey-steps strong{font-size:17px}.journey-steps span{font-size:15px}}
+
+/* Keep the practical walkthrough compact without changing spacing on other pages. */
+.how-hero{padding-block:clamp(48px,5vw,70px) clamp(45px,5vw,65px)}
+.how-hero .page-intro{margin-bottom:0}
+.how-hero h1{font-size:clamp(54px,6vw,86px);max-width:990px;margin-bottom:28px}
+.how-process{padding-block:clamp(72px,7vw,105px)}
+.how-process .process-heading{margin-bottom:38px}
+.how-process .step{padding-block:24px}
+@media(max-width:850px){.how-hero{padding-block:58px 66px}}
+@media(max-width:600px){.how-hero{padding-block:48px 60px}.how-hero h1{font-size:clamp(45px,11.1vw,60px);margin-bottom:22px}.how-process{padding-block:72px}.how-process .process-heading{margin-bottom:28px}.how-process .step{padding-block:20px}}

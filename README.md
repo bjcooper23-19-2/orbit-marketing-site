@@ -24,4 +24,4 @@ The owner has approved the Privacy Policy and Website Terms of Use. `legalApprov
 
 ## Sources
 
-Product reference revision: `bjcooper23-19-2/my-family-orbit@546c34e5ae3e3ffe7c95482b612333cda0a87b3e`. The product repository was read only. Product screenshots are crops of its tracked synthetic demo screenshots in `docs/screenshots/issue-151/after-to-sort-390.png` and `docs/screenshots/issue-161/orbit-161-after-{capture,review}-390.png`. The synthetic demo banner remains visible. The JPEG founder image is an optimised copy of the user-supplied photograph; the original PNG is not included. Font licences are in `assets/fonts/`.
+Product reference revision: `bjcooper23-19-2/my-family-orbit@546c34e5ae3e3ffe7c95482b612333cda0a87b3e`. The product repository was read only. Product screenshots are tracked synthetic demo captures from `docs/screenshots/issue-151/after-to-sort-390.png` and `docs/screenshots/issue-161/orbit-161-after-{capture,review}-390.png`. The synthetic demo banner remains visible. The JPEG founder image is an optimised copy of the user-supplied photograph; the original PNG is not included. Font licences are in `assets/fonts/`.
