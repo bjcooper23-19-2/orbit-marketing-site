@@ -57,7 +57,25 @@ const items = [
   item('notification', notification('Reminders','Tonight','Check tomorrow’s bags','19:10'), [50,89,204,7,13], [45,88,177,7]),
   item('flyer', flyer('CLUB NOTICE','NEW TERM','Registration closes Friday'), [77,91,195,-9,1], null,'club-flyer'),
   item('hand', hand('Where’s the letter?', 'check the school bag'), [-8,93,169,11,12], [1,91,152,10]),
-  item('notification', notification('Family chat','New message','Can someone take the present?','now'), [69,-4,192,-7,13], [62,-3,165,-7])
+  item('notification', notification('Family chat','New message','Can someone take the present?','now'), [69,-4,192,-7,13], [62,-3,165,-7]),
+  item('hand', hand('Lunch money Monday', 'put it in the bag'), [13,9,157,-12,16], [17,5,137,-12], 'butter'),
+  item('hand', hand('Reply to Amira', 'about Saturday'), [36,19,153,10,17], [55,10,132,9], 'lilac'),
+  item('list', list('Wednesday',['library books','swimming bag','reply to school']), [1,19,166,7,16], [1,18,148,8]),
+  item('hand', hand('PE day changed!', 'now Thursday'), [58,37,150,-9,16], [67,21,130,-9], 'coral-note'),
+  item('hand', hand('Sign reading log', 'before breakfast'), [20,37,161,13,17], [28,29,139,12], 'butter'),
+  item('list', list('Party bits',['present','card','reply by Tuesday']), [35,50,158,-11,16], [10,40,140,-11]),
+  item('hand', hand('Pick-up 4:30', 'side gate today'), [1,52,151,-7,17], [53,35,129,-8], 'lilac'),
+  item('notification', notification('School office','Please return','The photo consent form','11:28'), [49,57,211,8,16], null),
+  item('hand', hand('Library books!', 'check under the bed'), [19,67,167,-9,16], null, 'coral-note'),
+  item('list', list('Tomorrow morning',['water bottle','trainers','trip letter']), [44,68,166,7,16], null),
+  item('hand', hand('Call Nana', 'about Friday tea'), [1,82,149,11,16], null, 'butter'),
+  item('list', list('This weekend',['football 10:30','party 2 pm','pick up cake']), [53,7,166,9,16], [63,2,144,9]),
+  item('hand', hand('Milk after club', 'and bread'), [62,48,149,12,17], null, 'lilac'),
+  item('notification', notification('School app','New date','Class photos moved to Friday','09:12'), [5,27,197,-8,17], [3,24,171,-8]),
+  item('hand', hand('Spare shoes?', 'muddy ones in the car'), [31,79,164,-12,16], null, 'coral-note'),
+  item('email', mail('School office','Reminder for Friday','Please send the signed reading record in.'), [17,30,244,6,15], null),
+  item('hand', hand('RSVP by Tuesday', 'don’t forget the party'), [55,76,159,8,16], null, 'butter'),
+  item('list', list('Before Friday',['pay for trip','wash PE kit','book haircut']), [68,59,160,-9,15], null)
 ];
 
 export function renderCollage() {
@@ -65,5 +83,5 @@ export function renderCollage() {
     const [x,y,w,r,z]=desktop;
     const mobileStyle=mobile ? `--mx:${mobile[0]}%;--my:${mobile[1]}%;--mw:${mobile[2]}px;--mr:${mobile[3]}deg;` : '';
     return `<div class="incoming incoming-${format}${variant ? ` incoming-${variant}` : ''}${mobile ? '' : ' mobile-hide'}" style="--x:${x}%;--y:${y}%;--w:${w}px;--r:${r}deg;--z:${z};${mobileStyle}">${content}</div>`;
-  }).join('')}</div><div class="incoming-taper" aria-hidden="true"><div class="incoming incoming-notification incoming-taper-top">${notification('School app','New message','Please check tomorrow’s arrangements','now')}</div><div class="incoming incoming-notification incoming-taper-middle">${notification('Family chat','Pick-up changed','Can you collect at half past four?','12:18')}</div><div class="incoming incoming-hand incoming-taper-note">${hand('Return the form', 'before Friday')}</div><div class="incoming incoming-list incoming-taper-list">${list('This week',['PE kit','party reply'])}</div><div class="incoming incoming-hand incoming-taper-bottom">${hand('Swimming kit?', 'check the bag tonight')}</div></div>`;
+  }).join('')}</div>`;
 }
