@@ -53,14 +53,21 @@ for (const slug of ['privacy', 'terms']) {
   checks++;
 }
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-for (const page of pages.filter(page => page.indexable)) {
-  const url = `${origin}/${page.slug ? `${page.slug}/` : ''}`;
-  if (!sitemap.includes(`<loc>${url}</loc>`)) throw new Error(`sitemap missing ${url}`);
+const sitemapBody = sitemap.match(/^<\?xml version="1\.0" encoding="UTF-8"\?><urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">([\s\S]*)<\/urlset>$/)?.[1];
+if (sitemapBody === undefined) throw new Error('sitemap has an invalid XML wrapper.');
+const entries = [...sitemapBody.matchAll(/<url><loc>([^<]+)<\/loc><\/url>/g)];
+if (entries.map(entry => entry[0]).join('') !== sitemapBody) throw new Error('sitemap contains invalid XML entries.');
+const expectedUrls = new Set(pages.filter(page => config.publicationApproved && page.indexable).map(page => `${origin}/${page.slug ? `${page.slug}/` : ''}`));
+const actualUrls = entries.map(entry => entry[1]);
+if (actualUrls.length !== expectedUrls.size || new Set(actualUrls).size !== actualUrls.length) throw new Error('sitemap contains missing or duplicate URLs.');
+for (const url of actualUrls) {
+  if (!expectedUrls.has(url)) throw new Error(`sitemap contains a non-indexable or non-canonical URL: ${url}`);
+  const pathname = new URL(url).pathname;
+  await access(path.resolve('dist', `.${pathname}`, 'index.html'));
   checks++;
 }
 for (const asset of ['dist/assets/images/social-share.png', 'dist/assets/images/founder.jpg', 'dist/assets/images/orbit-demo-capture.png', 'dist/assets/images/orbit-demo-review.png', 'dist/assets/images/orbit-demo-to-sort.png', 'dist/assets/fonts/newsreader.ttf', 'dist/assets/fonts/dm-sans.woff2', 'dist/robots.txt', 'dist/sitemap.xml']) { await access(asset); checks++; }
 const robots = await readFile('dist/robots.txt', 'utf8');
-if (config.publicationApproved) {
-  if (!robots.includes('Allow: /') || !robots.includes(`Sitemap: ${origin}/sitemap.xml`) || robots.includes('Disallow: /')) throw new Error('Published build must allow indexing.');
-} else if (!robots.includes('Disallow: /')) throw new Error('Review build must block indexing.');
+const expectedRobots = `User-agent: *\n${config.publicationApproved ? 'Allow' : 'Disallow'}: /\nSitemap: ${origin}/sitemap.xml\n`;
+if (robots !== expectedRobots) throw new Error('robots.txt has incorrect crawl rules or sitemap URL.');
 console.log(`Checked ${pages.length} pages, local links and assets (${checks} checks).`);
