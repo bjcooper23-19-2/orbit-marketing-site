@@ -1,26 +1,32 @@
 # Publication checklist
 
-PR #1 is a review build. `publicationApproved` and `legalApproved` remain `false`; every page is `noindex, nofollow`, `robots.txt` disallows crawling, and the build rejects `publicationApproved: true`. Do not run the manual Pages workflow, merge, repoint DNS or publish without separate owner approval. The [readiness handover](publication-readiness.md) records evidence and exact release steps.
+PR #1 contains the owner-approved design, Privacy Policy and Website Terms of Use. `legalApproved` is true. The publication date is blank; `publicationApproved` is false. Every page remains `noindex, nofollow`, `robots.txt` disallows crawling, and the build rejects `publicationApproved: true`. The Pages workflow runs only by manual dispatch. Do not merge, deploy, change DNS or publish without separate release authorisation. See the [readiness handover](publication-readiness.md).
 
-## Complete in this PR
+## Confirmed by the owner
 
-- [x] Approved creative, founder image, product screenshots and page structure preserved.
-- [x] Central Tally URL `https://tally.so/r/4aKZqO` used by registration links; public form visibly has a required email field, required consent checkbox, privacy link and configured return URL. No submission was made.
-- [x] `hello@myfamilyorbit.uk` configured for contact and legal links; owner reports inbound routing tested. Outbound Gmail setup is deferred and is not a website publication blocker.
-- [x] Owner-provided Privacy Policy and Website Terms of Use drafted into distinct pages with company details; `legalApproved` remains `false`.
-- [x] Statutory operator information added to the shared footer; privacy and terms links remain available on every page.
-- [x] Canonical, social and sitemap URLs prepared for `https://myfamilyorbit.uk`; the review build stays blocked from indexing.
-- [x] Build, site checks and local Chrome review at 375, 390, 768, 1024 and 1440 px completed; visual evidence refreshed.
+- [x] Design, privacy policy and terms approved; operator details and statutory footer are present on all pages.
+- [x] Tally registration, explicit consent recording, consent field naming, owner notifications and thank-you experience tested. The central URL is `https://tally.so/r/4aKZqO`.
+- [x] Inbound delivery to `hello@myfamilyorbit.uk` tested.
+- [x] Annual interest-list reviews and up to 12 months' retention for resolved general enquiries approved.
+- [x] ICO data protection fee paid for Nineteen Point Two Limited.
+- [x] GitHub domain ownership verified; existing Cloudflare DNS exported and reviewed.
+- [x] GitHub Pages enabled with GitHub Actions as the deployment source; the repository custom domain is still unset.
+- [x] `app.myfamilyorbit.uk` confirmed as the primary application domain. Production household invitation and notification links point there; source-level and live authentication dependency checks are complete.
+- [x] Canonical, social and sitemap URLs prepared for `https://myfamilyorbit.uk`. Earlier build, site checks and desktop/mobile visual evidence are in [review evidence](review/README.md).
 
-## Required before an authorised release
+## Owner checks before publication
 
-- [ ] Obtain explicit owner approval of the final legal text and operational arrangements. Set `legalApproved: true` only then; set `publicationDate` to the actual publication date at release. The draft currently shows `[actual publication date]`.
-- [ ] Verify processor contracts and relevant international transfer safeguards for GitHub, Cloudflare, Tally and Google Workspace; record the actual data flows and lawful arrangements.
-- [ ] Inspect Tally admin settings and a test submission for timestamped consent evidence, consent wording/version, data export/deletion and redirect behaviour. Review the public consent control's generic `Confirm` label and `Untitled checkboxes field` legend.
-- [ ] Confirm the live cookie and storage behaviour of the deployed marketing site and Tally form. The local site has no analytics or advertising scripts; the current Cloudflare-served apex sets a security cookie. Assess whether any optional technology needs consent.
-- [ ] Establish an annual interest-list review, 12-month resolved-enquiry deletion process, a privacy-request handling process and a suppression/unsubscribe process before sending updates.
-- [ ] Complete the [ICO data protection fee self-assessment](https://ico.org.uk/for-organisations/data-protection-fee/data-protection-fee-self-assessment/) and record the outcome.
-- [ ] Resolve the domain routing conflict: the apex, `www`, `/privacy/` and `/terms/` currently redirect to `app.myfamilyorbit.uk`. Confirm the impact on application links and choose the marketing-site cutover and rollback plan before touching Cloudflare DNS.
-- [ ] Enable GitHub Pages with GitHub Actions as its source, verify the domain, deploy only after release approval, and then configure the custom domain and HTTPS. Preserve existing email, Resend and application DNS records.
-- [ ] Verify the live privacy link from Tally, Tally's return destination, all marketing routes, `www` behaviour, email routing, app access and social previews after the authorised cutover.
-- [ ] Complete a separate owner-approved release change that removes the unconditional publication guard and review indexing block only after these checks. Authorise merge, deployment and DNS changes separately.
+- [ ] Record which processing terms cover Nineteen Point Two Limited's actual GitHub Pages, Cloudflare, Tally and Google Workspace accounts, and the applicable UK international transfer routes. Tally publishes a DPA incorporated into professional account terms; verify the account belongs to the legal operator. Confirm Cloudflare's DPA, Google Workspace's CDPA and GitHub's applicable terms in the actual accounts. See [processor review](publication-readiness.md#processor-and-transfer-review).
+- [ ] Assign responsibility for the `hello@` privacy inbox and record a simple process to locate, export and delete Tally registrations and resolved enquiries, handle withdrawal and rights requests, and carry out the approved retention reviews. This can be manual; no new system is needed.
+- [ ] Set `publicationDate` to the actual publication date and obtain explicit approval for the release change that removes the publication and indexing guards.
+
+## At the separately authorised cutover
+
+- [ ] Configure the repository custom domain and HTTPS, then follow the recorded Cloudflare routing and rollback plan. Preserve application, email-routing and Resend records.
+- [ ] Check the published privacy and terms pages, Tally privacy and return links, registration and contact links, `www` behaviour, app access and representative desktop/mobile pages. Inspect actual deployed cookies and storage; add consent only if optional technologies are found.
+
+## Ongoing after publication
+
+- [ ] Carry out annual registration-list reviews and deletion of resolved enquiries at the approved interval; respond to privacy requests and record outcomes.
+- [ ] Before sending Orbit update emails, provide a simple opt-out in each message and maintain a suppression record. Outbound Gmail configuration and GA4 remain deferred.
+- [ ] Recheck provider terms, subprocessors, transfers and cookie behaviour when services or data flows change.

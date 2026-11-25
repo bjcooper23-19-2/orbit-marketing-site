@@ -3,7 +3,7 @@ import path from 'node:path';
 import { pages, shell } from '../src/site.mjs';
 
 const config = JSON.parse(await readFile('site.config.json', 'utf8'));
-if (config.publicationApproved) throw new Error('Publication is blocked: the owner must approve the final legal text, operational arrangements, publication date and release change before this guard is removed.');
+if (config.publicationApproved) throw new Error('Publication is blocked pending explicit release authorisation, the actual publication date and removal of this guard in an approved release change.');
 if (!/^https:\/\/[^\s]+$/.test(config.registrationUrl)) throw new Error('registrationUrl must be an HTTPS URL.');
 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(config.contactEmail)) throw new Error('contactEmail must be a valid email address.');
 if (config.signInUrl && !/^https:\/\/[^\s]+$/.test(config.signInUrl)) throw new Error('signInUrl must be an HTTPS URL.');
