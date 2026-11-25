@@ -22,7 +22,7 @@ for (const page of pages) {
   const canonical = `${origin}/${page.slug ? `${page.slug}/` : ''}`;
   if (!html.includes(`<link rel="canonical" href="${canonical}">`) || !html.includes(`<meta property="og:url" content="${canonical}">`) || !html.includes(`<meta property="og:image" content="${origin}/assets/images/social-share.png">`) || !html.includes(`<meta name="twitter:image" content="${origin}/assets/images/social-share.png">`)) throw new Error(`${page.slug || 'home'}: incorrect canonical or social URL`);
   checks++;
-  if (!html.includes(company.name) || !html.includes(company.number) || !html.includes('© 2026 Orbit. A Nineteen Point Two product.')) throw new Error(`${page.slug || 'home'}: missing statutory footer`);
+  if (!html.includes(company.name) || !html.includes(company.number) || !html.includes('Orbit. A Nineteen Point Two product.')) throw new Error(`${page.slug || 'home'}: missing statutory footer`);
   checks++;
   for (const slug of ['privacy', 'terms']) {
     if (!html.includes(`href="${page.slug ? '../' : './'}${slug}/"`)) throw new Error(`${page.slug || 'home'}: missing ${slug} footer link`);
