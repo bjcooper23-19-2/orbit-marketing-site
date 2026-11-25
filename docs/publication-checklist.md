@@ -1,6 +1,6 @@
 # Publication checklist
 
-PR #1 contains the approved website and legal text, dated **25 November 2026** for publication today. `legalApproved` and `publicationApproved` are true. Public pages are indexable and `robots.txt` allows crawling; registration and contact retain page-level `noindex`. The Pages workflow is manual. Do not merge, deploy, change DNS or publish without separate authorisation.
+The approved website and legal text are dated **25 November 2026**. `legalApproved` and `publicationApproved` are true. Public pages are indexable and `robots.txt` allows crawling; registration and contact retain page-level `noindex`. The Pages workflow runs on pushes to `main` after successful build and validation checks. Owner approval to merge also approves publication through that workflow; custom-domain and DNS changes require separate authorisation.
 
 ## Confirmed
 
@@ -13,9 +13,9 @@ PR #1 contains the approved website and legal text, dated **25 November 2026** f
 - [x] Cloudflare DNS exported and reviewed. The application domain and production invitation, notification and authentication links were checked. Existing application, email-routing and Resend records must be preserved.
 - [x] Canonical, social and sitemap URLs prepared for `https://myfamilyorbit.uk`; prior [desktop and mobile visual evidence](review/README.md) remains applicable.
 
-## At the separately authorised release
+## Release checks
 
-- [ ] Confirm publication will occur on 25 November 2026; otherwise change `publicationDate` before deployment. Obtain explicit approval to merge, deploy and alter DNS.
+- [ ] Confirm publication will occur on 25 November 2026; otherwise change `publicationDate` before merging. Obtain explicit owner approval to merge; this also approves the automatic Pages publication.
 - [ ] Configure the repository custom domain in Pages, verify HTTPS and apply the reviewed Cloudflare web-routing and rollback plan only under separate authorisation.
 - [ ] After deployment, verify the published privacy and terms pages, Tally privacy and return links, registration and contact links, `www`, app access, representative desktop/mobile pages, sitemap and live cookie/storage behaviour.
 
