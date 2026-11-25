@@ -1,6 +1,6 @@
 # Visual review evidence
 
-Captured from the local static build in headless Chrome on 25 November 2026. Full-page images include the navigation, page body and footer. Product screenshots use only the product repository's synthetic demo data. The review build was not published.
+Captured from the local static build in headless Chrome on 25 November 2026. Full-page images include the navigation, page body and footer. Product screenshots use only the product repository's synthetic demo data. The review build was not published. The legal-page images predate the final 25 November date setting; the current generated HTML was checked separately, and the date change does not alter the page layout.
 
 | Page | Mobile, 375 px | Desktop, 1440 px |
 |---|---|---|
