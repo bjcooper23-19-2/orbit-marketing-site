@@ -1,0 +1,9 @@
+# Creative direction
+
+The approved concept is **The Weight of Responsibility**, with a visual move from complexity to clarity. On desktop, the asymmetric homepage hero begins with forty fictional incoming information fragments on the left. Their uneven layers thin towards the right, with two smaller reminders lingering in the surrounding whitespace; the headline, explanation and actions stay clear. Email panes, newsletter pages, chat and text threads, invitations, posters, tables, forms, reminders and handwritten lists retain the visual cues of their sources. Later sections use calmer spacing, actual synthetic-demo product imagery, a simple responsibility diagram and the founder photograph.
+
+The fragments are fictional examples built with HTML and CSS, not screenshots. The collage is decorative and hidden from the accessibility reading flow. Product captures are genuine tracked images from the Orbit demo and are labelled as such. The founder photograph retains its original framing and natural colour. There is no stock family photography, decorative motion or repeated feature-card grid.
+
+Selected product captures sit in a restrained CSS phone frame to make Orbit's mobile experience clear: the early Home introduction, the How it works process image and the Capture screen. The review screen stays unframed, preserving an editorial contrast and a larger view of its details. The image files remain unchanged.
+
+Mobile is intentionally recomposed: a dense twenty-six-fragment field comes first, then fades into “Life is complicated.” The second headline phrase, explanation and actions have clear space below. In the founder teaser, the copy sits to the left of the unchanged photograph on desktop so Ben looks into it; mobile keeps copy before the photo in reading order. The page progressively opens into calmer sections. Keep navigation, copy and actions visually clear even where fragments overlap.

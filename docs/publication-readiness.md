@@ -1,0 +1,25 @@
+# Publication readiness handover
+
+Updated 25 November 2026. This review covers the static marketing website and external registration form. It does not cover household data, application accounts or payments. The owner has approved the website, privacy policy and terms; the text has not been independently legally reviewed. Completed technical and legal investigations were not repeated.
+
+## PR #1 status
+
+The registration URL, `hello@myfamilyorbit.uk` contact, statutory footer, canonical metadata, social image, favicon and sitemap are configured. Tally consent capture, owner notifications and thank-you flow, inbound email, ICO fee payment, app-domain links, DNS export and GitHub ownership are owner-confirmed. GitHub Pages is enabled with GitHub Actions, but its repository custom domain is not configured. The [internal supplier and privacy operations record](supplier-privacy-operations.md) records account facts, published terms, transfer routes and the director's privacy responsibilities.
+
+`legalApproved` and `publicationApproved` are true. `publicationDate` is **25 November 2026**, valid if publication takes place today. Public pages are indexable and `robots.txt` allows crawling; registration and contact retain page-level `noindex`. The Pages workflow remains manual, with no push trigger. No merge, deployment or DNS change occurred in this pass.
+
+## Supplier conclusion
+
+Google Workspace's CDPA acceptance is confirmed. Tally's published professional-user terms incorporate its DPA for the owner-confirmed business use of the free account. Cloudflare's published DPA forms part of its self-serve agreement, and the owner confirms the UK company billing account. Tally's direct Belgium transfer has UK adequacy; Google's CDPA and Cloudflare's DPA describe safeguards for applicable restricted transfers. Account-specific routing locations and onward supplier changes remain ordinary monitoring items, not evidence of an uncovered transfer.
+
+The repository is in the director's personal GitHub account. GitHub [documents visitor IP logging for Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) and publishes [controller privacy and international-transfer commitments](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). The owner accepts a documented working interpretation that GitHub is an independent controller for its own security and service usage logging for this static site. Its [customer DPA scope](https://github.com/customer-terms) does not establish coverage for free Pages in a personal account, and no such coverage is claimed. This interpretation does not conclusively settle every hosting-related processing role. The site does not put Tally responses or enquiry contents in GitHub. The privacy policy now explains GitHub's own logging and links to its privacy statement.
+
+The [ICO requires a written contract when a controller uses a processor](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/contracts). The owner has accepted the limited GitHub interpretation; no unresolved supplier action is being treated as a publication blocker for this static site. Reassess if account terms, hosting use or data flows change.
+
+## Release and ongoing work
+
+The director is responsible for `hello@` privacy requests, withdrawals, deletion and retention reviews. The manual process in the [supplier record](supplier-privacy-operations.md) uses existing Tally and mailbox controls. Annual list review and 12-month resolved-enquiry deletion are ongoing obligations. An opt-out and suppression check are required before sending update emails; outbound Gmail and GA4 are deferred. Check live cookies and storage on the deployed site during release acceptance and address any optional technology before enabling it.
+
+With explicit release authorisation, confirm the site will go live **25 November 2026**; otherwise update the legal-page date before deployment. Merge and run the manual Pages workflow only when authorised. Configure the repository custom domain and HTTPS, apply only the approved apex/`www` Cloudflare web-routing change with a rollback plan, and preserve application, email-routing and Resend records. Verify live legal pages, Tally privacy and return URLs, contact and registration links, `www`, app access, responsive pages, sitemap, cookies and social previews. [GitHub's custom-domain guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) supplies the current configuration steps.
+
+**Recommendation: GO for release preparation; no confirmed supplier or privacy-operations blocker remains for this limited site.** Actual publication still requires separate merge, deployment and DNS authorisation. The repository custom domain, HTTPS and live smoke checks are release execution steps, not new development work.
