@@ -18,9 +18,9 @@ The static output uses relative links, so it works at both a GitHub Pages reposi
 
 ## Configuration and publication
 
-Edit [`site.config.json`](site.config.json) for the eventual Tally registration URL, contact email, verified sign-in URL, and canonical origin. Empty values deliberately produce an unavailable state or hide the link. Do not insert a real form until its privacy arrangements are approved. GA4 remains inactive; its future measurement ID is reserved in the config and a consent implementation must be reviewed before enabling it.
+[`site.config.json`](site.config.json) holds the confirmed Tally registration URL, public contact email and canonical origin. Registration actions open the external Tally form; no form, database or mail service is embedded in this site. The optional sign-in URL is still empty and its link stays hidden. GA4 remains inactive; its future measurement ID loads no script and requires a reviewed consent implementation before use.
 
-The build intentionally refuses `publicationApproved: true` while the legal pages are placeholders. Replacing those pages and removing the guard requires a separate owner-approved release change. The Pages workflow is manual (`workflow_dispatch`) and is provided for a later authorised release. Do not trigger it during review. The workflow has no push trigger. The repository must not be merged or published until the owner authorises release and the blockers in [`docs/publication-checklist.md`](docs/publication-checklist.md) are resolved.
+The Privacy Policy and Website Terms of Use are owner-provided drafts. Their actual publication date is pending, `legalApproved` remains false, and the build still refuses `publicationApproved: true`. A separate owner-approved release change is required to complete the legal and operational checks, set the publication date, and remove the guard and review indexing restrictions. The Pages workflow is manual (`workflow_dispatch`) with no push trigger. Do not run it, merge, change DNS or publish during review. See the [publication checklist](docs/publication-checklist.md) and [readiness handover](docs/publication-readiness.md).
 
 ## Sources
 

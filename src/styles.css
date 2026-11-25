@@ -73,3 +73,19 @@
 .screenshot-strip .phone-figure{max-width:340px}
 .screenshot-strip .phone-frame{width:100%}
 @media(max-width:600px){.product-image-phone{width:min(100%,330px)}.screenshot-strip .phone-figure{width:min(100%,330px)}}
+
+.legal-page{padding-block:clamp(75px,8vw,125px) clamp(100px,10vw,150px)}
+.legal-page header{max-width:920px;margin-bottom:68px}
+.legal-page h1{font-size:clamp(53px,6vw,86px);line-height:1.04;margin-bottom:24px}
+.legal-date{color:#526762;font-size:14px;font-weight:600}
+.legal-body{max-width:790px;font-size:17px;line-height:1.65;overflow-wrap:anywhere}
+.legal-body section{border-top:1px solid var(--line);padding:32px 0 34px}
+.legal-body h2{font-family:var(--font-body);font-size:clamp(26px,2.8vw,34px);line-height:1.2;margin-bottom:20px}
+.legal-body p{margin-bottom:15px}.legal-body p:last-child{margin-bottom:0}
+.legal-body ul{margin:16px 0 20px;padding-left:24px}.legal-body li{padding-left:4px;margin-bottom:8px}
+.legal-body address{font-style:normal;line-height:1.8}
+.legal-body a,.utility-page a[href^="mailto:"]{color:var(--teal);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.footer-statutory{margin-top:50px;color:#526762;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.footer-statutory p{font-size:12px;margin:0 0 5px}
+.site-footer .footer-bottom{margin-top:26px}
+@media(max-width:600px){.legal-page{padding-block:72px 100px}.legal-page header{margin-bottom:44px}.legal-body{font-size:16px}.legal-body section{padding:26px 0 30px}.footer-statutory{margin-top:42px}}
