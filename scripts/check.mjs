@@ -7,6 +7,11 @@ const origin = config.canonicalOrigin.replace(/\/$/, '');
 let checks = 0;
 const titles = new Set();
 const descriptions = new Set();
+const one = (html, pattern, label) => {
+  const matches = [...html.matchAll(pattern)];
+  if (matches.length !== 1 || !matches[0][1]) throw new Error(`Expected one ${label}.`);
+  return matches[0][1];
+};
 for (const page of pages) {
   const directory = path.resolve('dist', page.slug);
   const html = await readFile(path.join(directory, 'index.html'), 'utf8');
@@ -15,10 +20,36 @@ for (const page of pages) {
     if (!pattern.test(html)) throw new Error(`${page.slug || 'home'}: missing ${pattern}`);
     checks++;
   }
-  const title = html.match(/<title>([^<]+)<\/title>/)?.[1];
-  const description = html.match(/<meta name="description" content="([^"]+)"/)?.[1];
+  const title = one(html, /<title>([^<]+)<\/title>/g, `${page.slug || 'home'} title`);
+  const description = one(html, /<meta name="description" content="([^"]+)"/g, `${page.slug || 'home'} description`);
   if (titles.has(title) || descriptions.has(description)) throw new Error(`${page.slug || 'home'}: duplicate metadata`);
+  if (/[—]/.test(title + description)) throw new Error(`${page.slug || 'home'}: em dash in metadata`);
   titles.add(title); descriptions.add(description); checks += 2;
+  for (const [label, pattern, expected] of [
+    ['Open Graph title', /<meta property="og:title" content="([^"]+)"/g, title],
+    ['Open Graph description', /<meta property="og:description" content="([^"]+)"/g, description],
+    ['Twitter title', /<meta name="twitter:title" content="([^"]+)"/g, title],
+    ['Twitter description', /<meta name="twitter:description" content="([^"]+)"/g, description]
+  ]) {
+    if (one(html, pattern, `${page.slug || 'home'} ${label}`) !== expected) throw new Error(`${page.slug || 'home'}: ${label} differs from page metadata`);
+    checks++;
+  }
+  const jsonLd = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  if (page.slug ? jsonLd.length !== 0 : jsonLd.length !== 1) throw new Error(`${page.slug || 'home'}: unexpected structured data`);
+  if (!page.slug) {
+    const data = JSON.parse(jsonLd[0][1]);
+    const graph = data['@graph'];
+    const organisation = graph?.find(item => item['@type'] === 'Organization');
+    const website = graph?.find(item => item['@type'] === 'WebSite');
+    if (data['@context'] !== 'https://schema.org' || graph.length !== 2 ||
+      organisation?.['@id'] !== `${origin}/#organization` || organisation.name !== company.name ||
+      organisation.legalName !== company.name || organisation.url !== `${origin}/` ||
+      organisation.email !== config.contactEmail || organisation.brand?.['@type'] !== 'Brand' ||
+      organisation.brand.name !== 'Orbit' || website?.['@id'] !== `${origin}/#website` ||
+      website.name !== 'Orbit' || website.url !== `${origin}/` || website.inLanguage !== 'en-GB' ||
+      website.publisher?.['@id'] !== organisation['@id']) throw new Error('Home: invalid Organization or WebSite structured data');
+    checks++;
+  }
   const canonical = `${origin}/${page.slug ? `${page.slug}/` : ''}`;
   if (!html.includes(`<link rel="canonical" href="${canonical}">`) || !html.includes(`<meta property="og:url" content="${canonical}">`) || !html.includes(`<meta property="og:image" content="${origin}/assets/images/social-share.png">`) || !html.includes(`<meta name="twitter:image" content="${origin}/assets/images/social-share.png">`)) throw new Error(`${page.slug || 'home'}: incorrect canonical or social URL`);
   checks++;
